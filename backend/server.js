@@ -44,6 +44,14 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Smart Road Damage Reporting API is running',
+    environment: process.env.NODE_ENV || 'development',
+  });
+});
+
 // ── Health Check ───────────────────────────────────────────────────────────
 app.get('/health', (req, res) => {
   res.json({
